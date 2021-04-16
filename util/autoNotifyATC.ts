@@ -26,13 +26,13 @@ export default async function autoNotifyATC(client: CommandoClient) {
     if (prevStations && prevStations.result.controllers.length !== onlineStations.data.controllers.length) {
       let currentATClist: string[] = [];
       let oldATClist: string[] = [];
-      for (const station of onlineStations.data.controllers.filter(({ callsign }: any) => callsign.match(/^LE.+_.+$|^GC.+_.+$|^ACCSP.+$/))) {
+      for (const station of onlineStations.data.controllers.filter(({ callsign }: any) => callsign.startsWith('LE') || callsign.startsWith('GC') || callsign.startsWith('ACCSP'))) {
         if (!station.callsign.endsWith('ATIS') && !station.callsign.endsWith('OBS')) currentATClist.push(station.callsign);
       }
-      for (const station of prevStations.result.controllers.filter(({ callsign }: any) => callsign.match(/^LE.+_.+$|^GC.+_.+$|^ACCSP.+$/))) {
+      for (const station of prevStations.result.controllers.filter(({ callsign }: any) => callsign.startsWith('LE') || callsign.startsWith('GC') || callsign.startsWith('ACCSP'))) {
         if (!station.callsign.endsWith('ATIS') && !station.callsign.endsWith('OBS')) oldATClist.push(station.callsign);
       }
-
+      
       //Check if new ATC logged on
       for (let i = 0; i < currentATClist.length; i++) {
         if (!oldATClist.find(station => station === currentATClist[i])) {

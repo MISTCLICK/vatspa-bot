@@ -2,6 +2,7 @@ import Commando from 'discord.js-commando';
 import mongoose from 'mongoose';
 import path from 'path';
 import autoNotifyATC from './util/autoNotifyATC';
+import autoUnmute from './schema/auto-unmute';
 import { token, mongoURI } from './config.json';
 
 const client = new Commando.CommandoClient({
@@ -25,6 +26,7 @@ client.once('ready', async () => {
 
   //Automatic action functions
   autoNotifyATC(client);
+  autoUnmute(client);
 
   console.log(`${client.user?.username} is ready to perform their duties.`);
 });
@@ -38,7 +40,6 @@ client.registry
   ])
   .registerDefaultGroups()
   .registerDefaultCommands({
-    ping: false,
     unknownCommand: false,
     prefix: false
   })

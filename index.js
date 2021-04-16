@@ -7,6 +7,7 @@ const discord_js_commando_1 = __importDefault(require("discord.js-commando"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const path_1 = __importDefault(require("path"));
 const autoNotifyATC_1 = __importDefault(require("./util/autoNotifyATC"));
+const auto_unmute_1 = __importDefault(require("./schema/auto-unmute"));
 const config_json_1 = require("./config.json");
 const client = new discord_js_commando_1.default.CommandoClient({
     owner: ['349553169035952140'],
@@ -29,6 +30,7 @@ client.once('ready', async () => {
     }
     //Automatic action functions
     autoNotifyATC_1.default(client);
+    auto_unmute_1.default(client);
     console.log(`${client.user?.username} is ready to perform their duties.`);
 });
 client.registry
@@ -40,7 +42,6 @@ client.registry
 ])
     .registerDefaultGroups()
     .registerDefaultCommands({
-    ping: false,
     unknownCommand: false,
     prefix: false
 })

@@ -5,4 +5,4 @@ const atcOnlineListScript = new mongoose.Schema({
   permanent: { type: Number, required: true }
 });
 
-export default mongoose.model<any>('atcOnlineRostov', atcOnlineListScript);
+export default mongoose.model<any>('onlineATCvatsim', atcOnlineListScript);

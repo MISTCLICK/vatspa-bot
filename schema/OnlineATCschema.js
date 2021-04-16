@@ -8,4 +8,4 @@ const atcOnlineListScript = new mongoose_1.default.Schema({
     result: { type: Object, required: true },
     permanent: { type: Number, required: true }
 });
-exports.default = mongoose_1.default.model('atcOnlineRostov', atcOnlineListScript);
+exports.default = mongoose_1.default.model('onlineATCvatsim', atcOnlineListScript);

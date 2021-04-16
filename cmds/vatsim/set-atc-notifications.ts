@@ -27,12 +27,12 @@ export default class SetPermaBookCommand extends Command {
       name: "set-atc-notifications",
       group: "vatsim",
       memberName: "set-atc-notifications",
-      description: "Определяет канал для оповещении об открытии/закрытии УВД позиций.",
+      description: "Defines the channel where ATC announcements will be published!",
       guildOnly: true,
       args: [
         {
           key: "channelTag",
-          prompt: "Пожалуйста тэгните канал для оповещении об открытии/закрытии УВД позиций.",
+          prompt: "Please tag a channel!",
           type: "string"
         }
       ],

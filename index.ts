@@ -32,10 +32,9 @@ client.once('ready', async () => {
 client.registry
   .registerDefaultTypes()
   .registerGroups([
-    ['aviation', 'Разные команды связанные с авиацией'],
-    ['admin', 'Команды для администраторов'],
-    ['vatsim', 'Команды связаные с сетью VATSIM'],
-    ['misc', 'Посторонние команды']
+    ['admin', 'Admin commands'],
+    ['vatsim', 'VATSIM commands'],
+    ['misc', 'Other commands']
   ])
   .registerDefaultGroups()
   .registerDefaultCommands({

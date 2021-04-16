@@ -42,8 +42,8 @@ export default async function autoNotifyATC(client: CommandoClient) {
             const atcOnlineEmbed = new MessageEmbed()
               .setColor('#00ff04')
               .setFooter(mainFooter)
-              .setAuthor(`${currentATClist[i]} is online!`, client.user?.displayAvatarURL())
-              .setDescription(`**${onlineStations.data.controllers.find((controller: any) => controller.callsign === currentATClist[i]).name}** went online on position **${currentATClist[i]}**\n${moment(new Date()).utc().format('HH:mm')}z\nFrequency **${onlineStations.data.controllers.find((controller: any) => controller.callsign === currentATClist[i]).frequency}**`)
+              .setAuthor(`${currentATClist[i]} está online!`, client.user?.displayAvatarURL())
+              .setDescription(`**${onlineStations.data.controllers.find((controller: any) => controller.callsign === currentATClist[i]).name}** se conectó en la posición **${currentATClist[i]}**\n${moment(new Date()).utc().format('HH:mm')}z\nFrecuencia **${onlineStations.data.controllers.find((controller: any) => controller.callsign === currentATClist[i]).frequency}**`)
 
             //@ts-ignore
             channel?.send(atcOnlineEmbed);
@@ -60,8 +60,8 @@ export default async function autoNotifyATC(client: CommandoClient) {
             const atcOfflineEmbed = new MessageEmbed()
               .setColor('#ff0000')
               .setFooter(mainFooter)
-              .setAuthor(`${oldATClist[j]} went offline!`, client.user?.displayAvatarURL())
-              .setDescription(`ATC station **${oldATClist[j]}** (${prevStations.result.controllers.find((controller: any) => controller.callsign === oldATClist[j]).name}) was closed!\n${moment(new Date()).utc().format('HH:mm')}z`)
+              .setAuthor(`${oldATClist[j]} está offline!`, client.user?.displayAvatarURL())
+              .setDescription(`Posición ATC **${oldATClist[j]}** (${prevStations.result.controllers.find((controller: any) => controller.callsign === oldATClist[j]).name}) se cerró!\n${moment(new Date()).utc().format('HH:mm')}z`)
 
             //@ts-ignore
             channel?.send(atcOfflineEmbed);

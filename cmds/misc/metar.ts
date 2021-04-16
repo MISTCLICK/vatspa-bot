@@ -9,7 +9,7 @@ export default class MetarCommand extends Command {
   constructor(client: CommandoClient) {
     super(client, {
       name: 'metar',
-      description: 'Gives out airport\'s METAR.',
+      description: 'evuelve el metar de un aeropuerto.',
       memberName: 'metar',
       group: 'misc',
       aliases: ['m'],
@@ -17,18 +17,18 @@ export default class MetarCommand extends Command {
         key: 'airport',
         type: 'string',
         default: '',
-        prompt: 'Please provide a 4 letter long ICAO code.'
+        prompt: 'Porfavor, escribe el codigo ICAO del aeropuerto a consultar.'
       }]
     });
   }
 
   async run(message: CommandoMessage, { airport }: thisArgs) {
     try {
-      if (airport.length !== 4) return message.reply('Please provide a 4 letter long ICAO code.');
+      if (airport.length !== 4) return message.reply('Porfavor, escribe el codigo ICAO del aeropuerto a consultar.');
       let metar = await axios.get(`https://metar.vatsim.net/${airport.toUpperCase()}`);
       return message.reply('```' + metar.data + '```');
     } catch (err) {
-      return message.reply('Such airport was not found!')
+      return message.reply('Aeropuerto no encontrado!')
     }
   }
 }

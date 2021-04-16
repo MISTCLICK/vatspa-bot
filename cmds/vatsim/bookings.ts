@@ -6,7 +6,7 @@ export default class MetarCommand extends Command {
   constructor(client: CommandoClient) {
     super(client, {
       name: 'bookings',
-      description: 'Gives out VATSPA bookings.',
+      description: 'Ver reservas de VATSPA.',
       memberName: 'bookings',
       aliases: ['books'],
       group: 'vatsim',
@@ -18,7 +18,7 @@ export default class MetarCommand extends Command {
       let res = await axios.get('http://vatbook.euroutepro.com/xml2.php');
       const xmlDoc: any = parser.toJson(res.data, { object: true });
       
-      let firstText = '**Position / Controller Name / Shift start time / Shift end time**```\n';
+      let firstText = '**Posicion / Controlador / Hora Inicio / Hora Fin**```\n';
 
       for (const booking of xmlDoc.bookings.atcs.booking.filter((book: any) => book.callsign.startsWith('LE') || book.callsign.startsWith('GC'))) {
         firstText += `${booking.callsign} | ${booking.name} ${booking.cid} | ${booking.time_start} | ${booking.time_end}\n`;

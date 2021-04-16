@@ -13,17 +13,17 @@ class NOTAMcommand extends discord_js_commando_1.default.Command {
             name: 'notam',
             group: 'misc',
             memberName: 'notam',
-            description: 'A command to get NOTAM of a certain airport.',
+            description: 'Comando para obtener los NOTAMs de un aeropuerto.',
             args: [
                 {
                     key: 'airport',
-                    prompt: "What airport's metar would you like to get?",
+                    prompt: "De que aeropuerto quieres ver los NOTAMs?",
                     type: 'string',
                     validate: (text) => text.length === 4
                 }
             ],
             argsCount: 1,
-            examples: ['!notam EVRA']
+            examples: ['!notam LEGE']
         });
     }
     async run(message, args) {
@@ -39,14 +39,14 @@ class NOTAMcommand extends discord_js_commando_1.default.Command {
         for (const notam of notamValue.data) {
             const notamember = new discord_js_1.MessageEmbed()
                 .setColor(config_json_1.mainColor)
-                .setAuthor(`NOTAM for ${args.airport.toUpperCase()}`, this.client.user?.displayAvatarURL(), 'http://veuroexpress.org')
+                .setAuthor(`NOTAM para ${args.airport.toUpperCase()}`, this.client.user?.displayAvatarURL(), 'http://veuroexpress.org')
                 .setDescription(notam.all)
                 .setFooter(config_json_1.mainFooter, this.client.user?.displayAvatarURL());
             message.author.send(notamember);
         }
         //@ts-ignore
         if (notamValue.data[0].all) {
-            message.reply('sent you a DM with information.');
+            message.reply('te he mandado un chat privado con la información.');
         }
         return null;
     }

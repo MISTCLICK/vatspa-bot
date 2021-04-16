@@ -27,12 +27,12 @@ export default class SetPermaBookCommand extends Command {
       name: "set-atc-notifications",
       group: "vatsim",
       memberName: "set-atc-notifications",
-      description: "Defines the channel where ATC announcements will be published!",
+      description: "Define el canal donde recibir notificaciones de conexion!",
       guildOnly: true,
       args: [
         {
           key: "channelTag",
-          prompt: "Please tag a channel!",
+          prompt: "Por favor, introduce un canal!",
           type: "string"
         }
       ],
@@ -54,6 +54,6 @@ export default class SetPermaBookCommand extends Command {
       useFindAndModify: false
     });
 
-    return message.reply('Operation successfully completed!');
+    return message.reply('Completado!');
   }
 }

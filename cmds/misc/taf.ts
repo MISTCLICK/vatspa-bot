@@ -5,7 +5,7 @@ interface thisArgs {
   airport: string;
 }
 
-export default class MetarCommand extends Command {
+export default class TafCommand extends Command {
   constructor(client: CommandoClient) {
     super(client, {
       name: 'taf',

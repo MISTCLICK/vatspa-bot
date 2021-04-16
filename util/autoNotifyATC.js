@@ -42,8 +42,8 @@ async function autoNotifyATC(client) {
                         const atcOnlineEmbed = new discord_js_1.MessageEmbed()
                             .setColor('#00ff04')
                             .setFooter(config_json_1.mainFooter)
-                            .setAuthor(`${currentATClist[i]} esta online!`, client.user?.displayAvatarURL())
-                            .setDescription(`**${onlineStations.data.controllers.find((controller) => controller.callsign === currentATClist[i]).name}** se conectó en la posición **${currentATClist[i]}**\n${moment_1.default(new Date()).utc().format('HH:mm')}z\Frecuencia **${onlineStations.data.controllers.find((controller) => controller.callsign === currentATClist[i]).frequency}**`);
+                            .setAuthor(`${currentATClist[i]} está online!`, client.user?.displayAvatarURL())
+                            .setDescription(`**${onlineStations.data.controllers.find((controller) => controller.callsign === currentATClist[i]).name}** se conectó en la posición **${currentATClist[i]}**\n${moment_1.default(new Date()).utc().format('HH:mm')}z\nFrecuencia **${onlineStations.data.controllers.find((controller) => controller.callsign === currentATClist[i]).frequency}**`);
                         //@ts-ignore
                         channel?.send(atcOnlineEmbed);
                     }
@@ -57,14 +57,14 @@ async function autoNotifyATC(client) {
                         const atcOfflineEmbed = new discord_js_1.MessageEmbed()
                             .setColor('#ff0000')
                             .setFooter(config_json_1.mainFooter)
-                            .setAuthor(`${oldATClist[j]} esta offline!`, client.user?.displayAvatarURL())
-                            .setDescription(`Posicion ATC **${oldATClist[j]}** (${prevStations.result.controllers.find((controller) => controller.callsign === oldATClist[j]).name}) se cerró!\n${moment_1.default(new Date()).utc().format('HH:mm')}z`);
+                            .setAuthor(`${oldATClist[j]} está offline!`, client.user?.displayAvatarURL())
+                            .setDescription(`Posición ATC **${oldATClist[j]}** (${prevStations.result.controllers.find((controller) => controller.callsign === oldATClist[j]).name}) se cerró!\n${moment_1.default(new Date()).utc().format('HH:mm')}z`);
                         //@ts-ignore
                         channel?.send(atcOfflineEmbed);
                     }
                 }
             }
         }
-    }, 1000 * 60);
+    }, 1000 * 60 * 3);
 }
 exports.default = autoNotifyATC;

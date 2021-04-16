@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const atcNotifySchema_1 = __importDefault(require("../../schema/atcNotifySchema"));
 const discord_js_commando_1 = require("discord.js-commando");
-class SetPermaBookCommand extends discord_js_commando_1.Command {
+class SetPermaAtcNotifyCommand extends discord_js_commando_1.Command {
     constructor(client) {
         super(client, {
             name: "set-atc-notifications",
@@ -35,7 +35,7 @@ class SetPermaBookCommand extends discord_js_commando_1.Command {
             upsert: true,
             useFindAndModify: false
         });
-        return message.reply('Correcto!');
+        return message.reply('Completado!');
     }
 }
-exports.default = SetPermaBookCommand;
+exports.default = SetPermaAtcNotifyCommand;

@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const xml2json_1 = __importDefault(require("xml2json"));
 const discord_js_commando_1 = require("discord.js-commando");
-class MetarCommand extends discord_js_commando_1.Command {
+class BookingsCommand extends discord_js_commando_1.Command {
     constructor(client) {
         super(client, {
             name: 'bookings',
-            description: 'Ver reservas de VATSPA'.',
+            description: 'Ver reservas de VATSPA.',
             memberName: 'bookings',
             aliases: ['books'],
             group: 'vatsim',
@@ -46,4 +46,4 @@ class MetarCommand extends discord_js_commando_1.Command {
         }
     }
 }
-exports.default = MetarCommand;
+exports.default = BookingsCommand;

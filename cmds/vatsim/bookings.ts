@@ -2,7 +2,7 @@ import axios from 'axios';
 import parser from 'xml2json';
 import { Command, CommandoClient, CommandoMessage } from 'discord.js-commando';
 
-export default class MetarCommand extends Command {
+export default class BookingsCommand extends Command {
   constructor(client: CommandoClient) {
     super(client, {
       name: 'bookings',

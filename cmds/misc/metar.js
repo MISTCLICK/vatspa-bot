@@ -9,7 +9,7 @@ class MetarCommand extends discord_js_commando_1.Command {
     constructor(client) {
         super(client, {
             name: 'metar',
-            description: 'Devuelve el metar de un aeropuerto.',
+            description: 'evuelve el metar de un aeropuerto.',
             memberName: 'metar',
             group: 'misc',
             aliases: ['m'],

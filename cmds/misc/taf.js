@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const discord_js_commando_1 = require("discord.js-commando");
-class MetarCommand extends discord_js_commando_1.Command {
+class TafCommand extends discord_js_commando_1.Command {
     constructor(client) {
         super(client, {
             name: 'taf',
@@ -37,4 +37,4 @@ class MetarCommand extends discord_js_commando_1.Command {
         }
     }
 }
-exports.default = MetarCommand;
+exports.default = TafCommand;

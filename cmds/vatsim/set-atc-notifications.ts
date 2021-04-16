@@ -21,7 +21,7 @@ interface thisArgs {
   channelTag: string;
 }
 
-export default class SetPermaBookCommand extends Command {
+export default class SetPermaAtcNotifyCommand extends Command {
   constructor(client: CommandoClient) {
     super(client, {
       name: "set-atc-notifications",

@@ -9,7 +9,7 @@ class MetarCommand extends discord_js_commando_1.Command {
     constructor(client) {
         super(client, {
             name: 'metar',
-            description: 'Gives out airport\'s METAR.',
+            description: 'Devuelve el metar de un aeropuerto.',
             memberName: 'metar',
             group: 'misc',
             aliases: ['m'],
@@ -17,19 +17,19 @@ class MetarCommand extends discord_js_commando_1.Command {
                     key: 'airport',
                     type: 'string',
                     default: '',
-                    prompt: 'Please provide a 4 letter long ICAO code.'
+                    prompt: 'Porfavor, escribe el codigo ICAO del aeropuerto a consultar.'
                 }]
         });
     }
     async run(message, { airport }) {
         try {
             if (airport.length !== 4)
-                return message.reply('Please provide a 4 letter long ICAO code.');
+                return message.reply('Porfavor, escribe el codigo ICAO del aeropuerto a consultar.');
             let metar = await axios_1.default.get(`https://metar.vatsim.net/${airport.toUpperCase()}`);
             return message.reply('```' + metar.data + '```');
         }
         catch (err) {
-            return message.reply('Such airport was not found!');
+            return message.reply('Aeropuerto no encontrado!');
         }
     }
 }

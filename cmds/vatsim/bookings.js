@@ -10,7 +10,7 @@ class MetarCommand extends discord_js_commando_1.Command {
     constructor(client) {
         super(client, {
             name: 'bookings',
-            description: 'Gives out VATSPA bookings.',
+            description: 'Ver reservas de VATSPA'.',
             memberName: 'bookings',
             aliases: ['books'],
             group: 'vatsim',
@@ -20,7 +20,7 @@ class MetarCommand extends discord_js_commando_1.Command {
         try {
             let res = await axios_1.default.get('http://vatbook.euroutepro.com/xml2.php');
             const xmlDoc = xml2json_1.default.toJson(res.data, { object: true });
-            let firstText = '**Position / Controller Name / Shift start time / Shift end time**```\n';
+            let firstText = '**Posicion / Controlador / Hora Inicio / Hora Fin**```\n';
             for (const booking of xmlDoc.bookings.atcs.booking.filter((book) => book.callsign.startsWith('LE') || book.callsign.startsWith('GC'))) {
                 firstText += `${booking.callsign} | ${booking.name} ${booking.cid} | ${booking.time_start} | ${booking.time_end}\n`;
             }

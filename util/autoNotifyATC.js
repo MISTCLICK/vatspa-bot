@@ -26,12 +26,12 @@ async function autoNotifyATC(client) {
         if (prevStations && prevStations.result.controllers.length !== onlineStations.data.controllers.length) {
             let currentATClist = [];
             let oldATClist = [];
-            for (const station of onlineStations.data.controllers) {
-                if (!station.callsign.endsWith('ATIS') && !station.callsign.endsWith('OBS') && station.callsign.startsWith('EVRA'))
+            for (const station of onlineStations.data.controllers.filter(({ callsign }) => callsign.match(/^LE.+_.+$|^GC.+_.+$|^ACCSP.+$/))) {
+                if (!station.callsign.endsWith('ATIS') && !station.callsign.endsWith('OBS'))
                     currentATClist.push(station.callsign);
             }
-            for (const station of prevStations.result.controllers) {
-                if (!station.callsign.endsWith('ATIS') && !station.callsign.endsWith('OBS') && station.callsign.startsWith('EVRA'))
+            for (const station of prevStations.result.controllers.filter(({ callsign }) => callsign.match(/^LE.+_.+$|^GC.+_.+$|^ACCSP.+$/))) {
+                if (!station.callsign.endsWith('ATIS') && !station.callsign.endsWith('OBS'))
                     oldATClist.push(station.callsign);
             }
             //Check if new ATC logged on

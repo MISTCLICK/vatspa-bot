@@ -22,7 +22,7 @@ module.exports = class BanCommand extends discord_js_commando_1.Command {
             return message.reply('Por favor, especifica una razón');
         const targetMember = message.guild.members.cache.get(target.id);
         if (!targetMember)
-            return message.reply('Usuario no encontrado');
+            return message.reply('Usuario no encontrado.');
         await target.send(`Fuiste baneado de **${message.guild.name}** por un moderador **${message.author.username}** por: \`${reason}\``);
         targetMember.ban({ reason: reason });
         return message.reply(`${target.username} fue baneado.`);

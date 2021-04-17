@@ -11,7 +11,7 @@ module.exports = class MuteCommand extends discord_js_commando_1.default.Command
             name: 'mute',
             group: 'admin',
             memberName: 'mute',
-            description: 'Silenciar a un usuario.',
+            description: 'Silenciar a un usuario',
             clientPermissions: ['ADMINISTRATOR'],
             userPermissions: ['MANAGE_MESSAGES', 'MUTE_MEMBERS'],
             argsType: 'multiple',

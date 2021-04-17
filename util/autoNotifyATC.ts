@@ -26,10 +26,10 @@ export default async function autoNotifyATC(client: CommandoClient) {
     if (prevStations && prevStations.result.controllers.length !== onlineStations.data.controllers.length) {
       let currentATClist: string[] = [];
       let oldATClist: string[] = [];
-      for (const station of onlineStations.data.controllers.filter(({ callsign }: any) => callsign.startsWith('LE') || callsign.startsWith('GC') || callsign.startsWith('ACCSP'))) {
+      for (const station of onlineStations.data.controllers.filter(({ callsign }: any) => (callsign.startsWith('LE') || callsign.startsWith('GC') || callsign.startsWith('ACCSP')) && callsign.split('_')[0].length >= 4)) {
         if (!station.callsign.endsWith('ATIS') && !station.callsign.endsWith('OBS')) currentATClist.push(station.callsign);
       }
-      for (const station of prevStations.result.controllers.filter(({ callsign }: any) => callsign.startsWith('LE') || callsign.startsWith('GC') || callsign.startsWith('ACCSP'))) {
+      for (const station of prevStations.result.controllers.filter(({ callsign }: any) => (callsign.startsWith('LE') || callsign.startsWith('GC') || callsign.startsWith('ACCSP')) && callsign.split('_')[0].length >= 4)) {
         if (!station.callsign.endsWith('ATIS') && !station.callsign.endsWith('OBS')) oldATClist.push(station.callsign);
       }
       

@@ -46,7 +46,7 @@ class TrafficCommand extends discord_js_commando_1.Command {
                 });
             }
             fullAptList.sort((a, b) => b.totalCount - a.totalCount);
-            let finalText = '*Aeropuertos con más trafico en ESP :*\n**ICAO / Sal / Lleg  / Total**```\n';
+            let finalText = '*Aeropuertos con más trafico en ESP:*\n**ICAO / Sal / Lleg  / Total**```\n';
             let outLength = fullAptList.length >= 10 ? 9 : fullAptList.length;
             for (let i = 0; i < outLength; i++) {
                 finalText += `${fullAptList[i].icao} | ${fullAptList[i].departureCount} | ${fullAptList[i].arrivalCount} | ${fullAptList[i].totalCount}\n`;

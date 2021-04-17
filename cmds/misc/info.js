@@ -7,7 +7,7 @@ class MetarCommand extends discord_js_commando_1.Command {
     constructor(client) {
         super(client, {
             name: 'info',
-            description: 'Información del bot!',
+            description: 'Informacion del bot!',
             memberName: 'info',
             group: 'misc',
             aliases: ['i'],

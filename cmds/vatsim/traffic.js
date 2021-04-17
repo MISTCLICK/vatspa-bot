@@ -9,7 +9,7 @@ class TrafficCommand extends discord_js_commando_1.Command {
     constructor(client) {
         super(client, {
             name: 'traffic',
-            description: 'Provides traffic information for given airport.',
+            description: 'Da información de traficos en un aeropuerto.',
             memberName: 'traffic',
             aliases: ['trfc'],
             group: 'vatsim',
@@ -21,7 +21,7 @@ class TrafficCommand extends discord_js_commando_1.Command {
         if (args && args.length === 1 && args[0].length === 4) {
             const departureCount = onlineStations.data.pilots.filter((p) => p.flight_plan && p.flight_plan.departure === args[0].toUpperCase()).length;
             const arrivalCount = onlineStations.data.pilots.filter((p) => p.flight_plan && p.flight_plan.arrival === args[0].toUpperCase()).length;
-            return message.reply(`Current traffic at ${args[0].toUpperCase()}:\n\`Departures: ${departureCount}\`\n\`Arrivals: ${arrivalCount}\`\n\`Total: ${departureCount + arrivalCount}\``);
+            return message.reply(`Trafico actual en ${args[0].toUpperCase()}:\n\`Salidas: ${departureCount}\`\n\`Llegadas: ${arrivalCount}\`\n\`Total: ${departureCount + arrivalCount}\``);
         }
         else {
             const flightFilter = (p) => p.flight_plan && (p.flight_plan.departure.startsWith('LE') || p.flight_plan.departure.startsWith('GC') || p.flight_plan.arrival.startsWith('GC') || p.flight_plan.arrival.startsWith('LE'));
@@ -46,7 +46,7 @@ class TrafficCommand extends discord_js_commando_1.Command {
                 });
             }
             fullAptList.sort((a, b) => b.totalCount - a.totalCount);
-            let finalText = '*Busiest airports in VATSPA airspace:*\n**ICAO / Sal / Lleg  / Total**```\n';
+            let finalText = '*Aeropuertos con más trafico en ESP :*\n**ICAO / Sal / Lleg  / Total**```\n';
             let outLength = fullAptList.length >= 10 ? 9 : fullAptList.length;
             for (let i = 0; i < outLength; i++) {
                 finalText += `${fullAptList[i].icao} | ${fullAptList[i].departureCount} | ${fullAptList[i].arrivalCount} | ${fullAptList[i].totalCount}\n`;

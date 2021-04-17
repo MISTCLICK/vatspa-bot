@@ -6,7 +6,7 @@ export default class MetarCommand extends Command {
   constructor(client: CommandoClient) {
     super(client, {
       name: 'info',
-      description: 'Information about the bot!',
+      description: 'Informacion del bot!',
       memberName: 'info',
       group: 'misc',
       aliases: ['i'],

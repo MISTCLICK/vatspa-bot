@@ -8,7 +8,7 @@ export = class MuteCommand extends Commando.Command {
       name: 'mute',
       group: 'admin',
       memberName: 'mute',
-      description: 'Allows to mute a user.',
+      description: 'Silenciar a un usuario',
       clientPermissions: ['ADMINISTRATOR'],
       userPermissions: ['MANAGE_MESSAGES', 'MUTE_MEMBERS'],
       argsType: 'multiple',

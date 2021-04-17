@@ -8,7 +8,7 @@ export default class AnnounceCommand extends Command {
       name: 'announce',
       group: 'admin',
       memberName: 'announce',
-      description: 'Allows to create an embedded announcement',
+      description: 'Anunciar algo',
       guildOnly: true,
       aliases: ['ann'],
       userPermissions: ["MANAGE_CHANNELS"]
@@ -17,10 +17,10 @@ export default class AnnounceCommand extends Command {
 
   async run(message: CommandoMessage) {
     const questions = [
-      'Enter the title of this announcement. At any moment you can type `-` and the process will stop.',
-      'Enter the link for this announcement\'s title.',
-      'Enter the main part of this announcement.',
-      'Enter a link for this announcement\'s image. If you don\'t want to have an attached image to the announcement, type `N`.'
+      'Introduce el titulo del anuncio. En cualquier momento puedes escribir `-` y el proceso se parará.',
+      'Introduce el link para el titulo del anuncio.',
+      'Introduce el texto del anuncio.',
+      'Introduce un link para la imagen del anuncio. Si no quieres poner ninguna imagen, escribe `N`.'
     ];
     let counter = 0;
     const filter = (m: CommandoMessage) => m.author.id === message.author.id;
@@ -34,7 +34,7 @@ export default class AnnounceCommand extends Command {
     collector.on('collect', async (m: CommandoMessage) => {
       if (m.content === '-') {
         collector.emit('end');
-        return message.reply('Announcement creation process stopped.');
+        return message.reply('Proceso de creación de anuncio parado.');
       } else if (counter < questions.length) {
         m.channel.send(questions[counter++]);
       }
@@ -46,7 +46,7 @@ export default class AnnounceCommand extends Command {
       if (collectedArr[0].content == '-' || collectedArr[1].content == '-' || collectedArr[2].content == '-' || collectedArr[3].content == '-') {
         return;
       } else if (collectedArr.length < questions.length) {
-        return message.reply('Not enough information given.');
+        return message.reply('No hay información suficiente.');
       }
 
       const title = collectedArr[0].content;
@@ -63,14 +63,14 @@ export default class AnnounceCommand extends Command {
         .setFooter(mainFooter)
 
       await message.channel.send(embed);
-      message.channel.send('This is the preview of your announcement. Type `+` to publish it or `-` to cancel the process. **If you decide to publish the announcement, you will not be able to revert or stop this process!**');
+      message.channel.send('Esta es la vista previa de tu anuncio. Escribe `+` para publicarlo o  `-` para cancelarlo. **Si decides continuar con la publicación, no podrás revertir o parar esta acción!**');
       message.channel.awaitMessages(filter, { max: 1, time: 1000 * 30, errors: [ 'time' ] })
         .then(async (messages) => {
           if (messages.first()?.content == '+') {
             const questions2 = [
-              'Tag the roles, that should be notified or enter the non-embedded message.',
-              'Tag the channel, where the announcement will be published.',
-            ];
+              'Etiqueta a los roles que serán notificados.',
+              'Escribe el canal donde se publicará el anuncio.',
+          ];
             counter = 0;
             //@ts-ignore
             const collector2 = new MessageCollector(message.channel, filter, {
@@ -88,7 +88,7 @@ export default class AnnounceCommand extends Command {
             collector2.on('end', async collected2 => {
               const collected2Arr = collected2.array();
               if (collected2Arr.length < questions2.length) {
-                return message.reply('Not enough information given.');
+                return message.reply('No hay suficiente información.');
               }
 
               const unEmbed = collected2Arr[0].content;
@@ -103,16 +103,16 @@ export default class AnnounceCommand extends Command {
                 .setFooter(mainFooter)
               
               channel.send(unEmbed, finalEmbed).catch(console.error);
-              message.reply('Announcement successfully published!');
+              message.reply('Anuncio publicado correctamente!');
             });
           } else if (messages.first()?.content == '-') {
-            return message.reply('Process cancelled.');
+            return message.reply('Proceso cancelado.');
           } else {
-            return message.reply('Answer type not determined, proecess cancelled.');
+            return message.reply('Respuesta incorrecta. Proceso cancelado.');
           }
         }).catch(() => { 
-          return message.reply('Not enough information given.');
-      });
+          return message.reply('No hay suficiente información.');
+        });
     });
     return null;
   }

@@ -10,7 +10,7 @@ export = class ListWarnsCommand extends Command {
       name: 'list-warnings',
       group: 'admin',
       memberName: 'list-warnings',
-      description: 'Allows to get all warning issued to a certain member.',
+      description: 'Ver todos los avisos de un usuario.',
       guildOnly: true,
       userPermissions: ["MANAGE_MESSAGES"],
       aliases: ['lw']

@@ -9,7 +9,7 @@ export default class MetarCommand extends Command {
   constructor(client: CommandoClient) {
     super(client, {
       name: 'metar',
-      description: 'evuelve el metar de un aeropuerto.',
+      description: 'Devuelve el metar de un aeropuerto.',
       memberName: 'metar',
       group: 'misc',
       aliases: ['m'],

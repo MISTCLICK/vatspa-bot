@@ -10,7 +10,7 @@ module.exports = class WarnCommand extends discord_js_commando_1.Command {
             name: 'warn',
             group: 'admin',
             memberName: 'warn',
-            description: 'Allows you to warn a user.',
+            description: 'Avisar a un usuario.',
             clientPermissions: ["ADMINISTRATOR"],
             userPermissions: ["MANAGE_MESSAGES"],
             argsType: "multiple",

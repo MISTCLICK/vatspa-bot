@@ -6,7 +6,7 @@ class KickCommand extends discord_js_commando_1.Command {
             name: 'kick',
             group: 'admin',
             memberName: 'kick',
-            description: 'Allows you to kick a user.',
+            description: 'Expulsar a un usuario.',
             userPermissions: ['KICK_MEMBERS'],
             argsType: "multiple"
         });

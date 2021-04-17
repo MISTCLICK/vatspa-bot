@@ -6,7 +6,7 @@ export default class SayCommand extends Command {
       name: 'say',
       group: 'admin',
       memberName: 'say',
-      description: 'Allows to say something as a bot in any channel!',
+      description: 'Decir algo desde el bot en algun canal!',
       guildOnly: true,
       userPermissions: ["MANAGE_MESSAGES"],
       argsType: 'multiple'

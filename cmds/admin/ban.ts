@@ -8,6 +8,7 @@ export = class BanCommand extends Command {
       memberName: 'ban',
       description: 'Allows you to ban a user.',
       userPermissions: ['BAN_MEMBERS'],
+      guildOnly: true,
       argsType: 'multiple'
     });
   }

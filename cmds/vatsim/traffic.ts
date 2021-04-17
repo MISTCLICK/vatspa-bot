@@ -45,7 +45,7 @@ export default class TrafficCommand extends Command {
 
       fullAptList.sort((a, b) => b.totalCount - a.totalCount);
       let finalText = '*Busiest airports in VATSPA airspace:*\n**ICAO / Sal / Lleg  / Total**```\n';
-      let outLength = fullAptList.length >= 10 ? 9 : fullAptList.length
+      let outLength = fullAptList.length >= 10 ? 9 : fullAptList.length;
 
       for (let i = 0; i < outLength; i++) {
         finalText += `${fullAptList[i].icao} | ${fullAptList[i].departureCount} | ${fullAptList[i].arrivalCount} | ${fullAptList[i].totalCount}\n`;

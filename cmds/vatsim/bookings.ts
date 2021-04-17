@@ -29,7 +29,7 @@ export default class BookingsCommand extends Command {
 
       let allLines = firstText.split('\n');
       for (const line of allLines) {
-        if (finText.length + line.length < 2000) {
+        if (finText.length + line.length < 1995) {
           finText += `${line}\n`;
         } else {
           otherFinText += `${line}\n`;

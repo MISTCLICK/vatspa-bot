@@ -28,7 +28,7 @@ class BookingsCommand extends discord_js_commando_1.Command {
             let otherFinText = '```';
             let allLines = firstText.split('\n');
             for (const line of allLines) {
-                if (finText.length + line.length < 2000) {
+                if (finText.length + line.length < 1995) {
                     finText += `${line}\n`;
                 }
                 else {

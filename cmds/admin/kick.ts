@@ -8,6 +8,7 @@ class KickCommand extends Command {
       memberName: 'kick',
       description: 'Expulsar a un usuario.',
       userPermissions: ['KICK_MEMBERS'],
+      guildOnly: true,
       argsType: "multiple"
     });
   }

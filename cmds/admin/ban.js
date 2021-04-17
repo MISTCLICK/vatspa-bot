@@ -8,6 +8,7 @@ module.exports = class BanCommand extends discord_js_commando_1.Command {
             memberName: 'ban',
             description: 'Banear un usuario.',
             userPermissions: ['BAN_MEMBERS'],
+            guildOnly: true,
             argsType: 'multiple'
         });
     }

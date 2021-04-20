@@ -38,7 +38,9 @@ class BookingsCommand extends discord_js_commando_1.Command {
             finText += '```';
             otherFinText += '```';
             message.channel.send(finText);
-            return message.channel.send(otherFinText);
+            if (otherFinText.length > 6)
+                message.channel.send(otherFinText);
+            return null;
         }
         catch (err) {
             console.error(err);

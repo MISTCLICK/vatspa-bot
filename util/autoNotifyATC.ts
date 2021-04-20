@@ -69,5 +69,5 @@ export default async function autoNotifyATC(client: CommandoClient) {
         }
       }
     }
-  }, 1000 * 60 * 3);
+  }, 1000 * 60);
 }
